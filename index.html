@@ -1,0 +1,522 @@
+<!DOCTYPE HTML>
+<!-- <html lang="en-US"> -->
+<html lang="es-PE" class="fade">
+<!-- 
+  ^ la clase "fade" hace que las diapositivas pasen suavemente de una a otra
+ -->
+<!-- <html lang="en-US" class="nonumbers"> -->
+<!-- 
+  Si no quieres números en las diapositivas agrega la clase "nonumbers" al elemento HTML.
+-->
+<head>
+  <meta charset="UTF-8">
+  <title>Desarrollo de aplicaciones en Firefox OS</title>
+<!-- 
+  Si subes la presentación a la web, asegurate de tener un buen título, este se mostrará en los resultados de las búsquedas y en las redes sociales
+ -->
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+  <link rel="stylesheet" href="themes/mozilla/styles/style.css">
+  <style type="text/css">
+    div[id$='bullets'].slide > div::after {
+      content: 'Solo para información, NO mostrar';
+      background: rgba(200,0,0,0.5);
+      color: #fff;
+      position: absolute;
+      top: 20px;
+      right: 0;
+      padding: 5px 20px;
+      transform: rotate(90deg) translate(52%,-150px);
+      border-radius: 5px;
+    }
+    .full div[id$='bullets'].slide > div::after {
+      animation: wiggle alternate 1s infinite;
+    }
+    @keyframes wiggle {
+      from {
+        transform: rotate(90deg) translate(52%,-150px);
+      }
+      to {
+        transform: rotate(90deg) translate(52%,-160px);
+      }
+    }
+    .slide.shout h2 {
+      font-size: 130px;
+    }
+  </style>
+</head>
+<body class="list">
+
+  <header class="caption">
+    <h1>Desarrollo de aplicaciones en Firefox OS</h1>
+    <p class="footer">
+      Juan Eladio Sánchez Rosas, 
+      <a href="https://twitter.com/juaneladio">@juaneladio</a>
+    </p>
+  </header>
+  <aside class="talkdescription">
+    <p>Esta presentación usa el sistema shower, puedes pasar por encima de cada diapositiva para ver las notas y hacer clic en cualquiera de ellas para ir al modo de presentación. Después puedes usar las teclas para navegar <button onclick="goFullScreen()">Pantalla completa</button></p>
+    <p class="abstract">
+      <strong>Resumen: </strong>
+      Firefox OS es un nuevo sistema operativo móvil enfocado en mercados emergentes y que desembarcó en Perú y algunos países de Latinoamérica en 2013. Lo que probablemente no sabías es que toda aplicación web puede ser llevada rápidamente a esta plataforma.
+      <br>
+      En esta presentación explicaremos porqué Firefox OS resulta atractivo a los desarrolladores, qué pasos deben seguir para portar sus aplicaciones y qué le espera en este 2014 en Perú y el resto del mundo.
+    </p>
+  </aside>
+
+<!-- 
+    Copia simplemente cada bloque completo para cada diapositiva que quieras. Las diapositivas especiales tienen clases extra. Cada dispositiva necesita un ID que permite un marcador y saltar a esa diapositiva específicamente.
+-->
+
+  <div id="firefoxos" class="slide"><div>
+    <section>
+      <header>
+        <h2>Desarrollo de aplicaciones en Firefox OS</h2>
+      </header>
+      <img src="pictures/firefoxos-dev/mozillaorg-firefoxos.png" class="middle" alt="Fin">
+                        <p class="demourl">
+                                <a href="http://firefox.com/os">firefox.com/os</a>
+                        </p>
+    <footer class="notes">
+      Esta es la diapositiva de introducción a Firefox OS. Explica que es un sistema operativo nuevo, basado completamente en tecnologías Web y pensado para mercados que otros no están cubriendo. Tanto cumpliendo las promesas que otros habían hecho como cumpliendo los principios definidos en el Manifiesto de Mozilla.
+    </footer>
+    </section>
+  </div></div>  
+  
+  <div id="newmarket" class="slide h cover"><div>
+    <section>
+      <header>
+        <h2>Un nuevo mercado</h2>
+      </header>
+      <img src="pictures/fxos/hobbes-earth.jpg" 
+           alt="World wide web" 
+           class="middle shadow" height="450">
+    <footer class="notes">
+      Firefox OS, y esto es importante decirlo, no se enfoca en los mismos mercados que iOS y Android. Su objetivo principal es llevar la conectividad a la web a mercados que no pueden permitirse otras plataformas o ni siquiera tienen acceso a ellas. Es es la razón por la que los usuarios de Firefox OS no estan comparando lo que realizan como desarrolladores de Aplicaciones con las últimas desarrolladas para Andoird e iOS. Tu trabajo como desarrollador de aplicaciones para Firefox OS es brindar la primera impresión de la Web a muchos nuevos usuarios. No es una tarea sencilla, pero si muy fructífera y reconfortante. En lugar de copiar Angry Birds y no tener el rendimiento de hardware que necesitas, puedes ser el nuevo Angry Birds para una audiencia totalmente nueva.
+    </footer>
+    </section>
+  </div></div>
+
+	<div id="brokenpromise" class="slide"><div>
+		<section>
+			<header>
+				<h2>HTML5 para el mundo móvil</h2>
+			</header>
+			<img src="pictures/firefoxos-dev/html5promise.png" class="middle" alt="Smartphone equals HTML5">
+
+		<footer class="notes">
+			En el principio la promesa era que HTML5 permitiría a los desarrolladores crear 
+			aplicaciones web que le saquen provecho a los recursos de un celular. Finalmente las
+			aplicaciones web tendrían una plataforma que no sólo estaría a la vanguardia sino 
+			también les permitiría a todos construir para estos dispositivos.
+		</footer>
+
+		</section>
+	</div></div>
+  
+	<div id="firefoxandroid" class="slide"><div>
+		<section>
+			<header>
+				<h2>Firefox para Android</h2>
+			</header>
+			<img src="pictures/firefoxos-dev/firefoxandroid.jpg" class="middle" alt="Firefox for Android">
+
+		<footer class="notes">
+			La primera respuesta de Mozilla en el frente móvil fue Firefox para Android, un 
+			navegador que llevara parte de las ventajas de Firefox de escritorio a un móvil, 
+			y que permitiera sincronizar datos de navegación entre móviles y PCs. Está 
+			disponible en Google Play y tiene más opciones que el Android Browser que viene por
+			defecto. No hay Firefox para otras plataformas móviles por impedimentos legales.
+		</footer>
+
+		</section>
+	</div></div>
+
+  <div id="fxapps" class="slide"><div>
+    <section>
+      <header>
+        <h2>Firefox OS</h2>
+      </header>
+      <img src="pictures/fxos/apps.png" class="middle" height="400" 
+           alt="Firefox OS apps">
+      <p class="demourl">
+        <a href="https://marketplace.firefox.com/developers/docs/concept">¿Qué hace que una aplicación sea genial?</a>
+      </p>
+    <footer class="notes">
+      Las aplicaciones son "lo nuevo", salvo que no lo son. Esencialmente una aplicación es una cosa que realiza una sola tarea bien y es autosuficiente. En lugar de abrir un sitio web y tenerlo abierto junto a otras pestañas, abres una aplicación y es el foco principal de tu atención. Las personas aman esto. Le da al usuario una experiencia de una sola tarea sin que se distraigan. La buena noticia es que las tecnologías que rodean al HTML5 son lo suficientemente flexibles como para brindar ambos casos: puedes crear un sitio web pero también puedes convertirlo fácilmente en una aplicación. 
+    </footer>
+    </section>
+  </div></div>
+
+	<div id="peru-in-world" class="slide cover w"><div>
+		<section>
+			<header>
+				<h2>Perú: parte de las Olas del 2013</h2>
+			</header>
+			<img src="pictures/firefoxos-dev/vlcsnap-05.png" class="middle" alt="First markets">
+
+		<footer class="notes">
+      Ola 1: España, Polonia, Colombia, Venezuela. Ola 2: Brasil, Perú, Uruguay, México.
+		</footer>
+
+		</section>
+	</div></div>
+
+  <div id="necesitamos-apps" class="slide"><div>
+    <section>
+      <header>
+        <h2>¡Necesitamos apps!</h2>
+      </header>
+      <img src="pictures/appsperu/ArturoMartinez.jpg" class="middle" height="400" 
+           alt="Arturo Martínez, Launch Team Venezuela">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="ya-sabemos" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Ya sabemos cómo hacerlas</h2>
+      </header>
+      <img src="pictures/appsperu/MozCafeLima.jpg" class="middle" height="400" 
+           alt="MozCafé Lima">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+	<div id="problemas-reales" class="slide cover w"><div>
+		<section>
+			<header>
+				<h2>Apps peruanas para Firefox OS</h2>
+			</header>
+			<img src="pictures/appsperu/PaperToys.jpg" class="middle" alt="PaperToys">
+      <p class="demourl">
+        <a href="https://github.com/mozillaperu/apps">github.com/mozillaperu/apps</a>
+      </p>
+
+		<footer class="notes">
+      Apps que resuelvan problemas reales, en nuestro país
+		</footer>
+
+		</section>
+	</div></div>
+
+  <div id="desarrollo-aplicaciones-firefox-os" class="slide shout"><div>
+    <section>
+      <header>
+        <h2>Desarrollo de aplicaciones en Firefox OS</h2>
+      </header>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+	<div id="como-empezar" class="slide cover w"><div>
+		<section>
+			<header>
+				<h2>¿Cómo empezar?</h2>
+			</header>
+			<img src="pictures/firefoxos-dev/mdn-firefoxos.png" class="middle" alt="Firefox OS en MDN">
+			<p class="demourl">
+				<a href="https://developer.mozilla.org/es/docs/Mozilla/Firefox_OS">developer.mozilla.org</a>
+			</p>
+
+		<footer class="notes">
+			Hay documentación en español sobre Firefox OS en la Mozilla Developer Network.
+		</footer>
+
+		</section>
+	</div></div>
+
+	<div id="firefoxos-dev-paso1" class="slide cover w"><div>
+		<section>
+			<header>
+				<h2>Paso 1: Crea tu aplicación web con HTML5, CSS y JavaScript</h2>
+			</header>
+			<img src="pictures/firefoxos-dev/firefoxos-dev-paso1.png" class="middle" alt="Paso 1: Crea">
+			<p class="demourl">
+				<a href="https://developer.mozilla.org/es/docs/Aplicaciones">developer.mozilla.org</a>
+			</p>
+
+		<footer class="notes">
+			Crea tu aplicación web con HTML5, CSS y JavaScript que se adecúe a los diversos tipos de pantalla.
+		</footer>
+
+		</section>
+	</div></div>
+
+	<div id="firefoxos-dev-paso2" class="slide cover w"><div>
+		<section>
+			<header>
+				<h2>Paso 2: Evalúa qué componentes deben ser offline.</h2>
+			</header>
+			<img src="pictures/firefoxos-dev/firefoxos-dev-paso2.png" class="middle" alt="Paso 2: Evalúa">
+			<p class="demourl">
+				<a href="https://developer.mozilla.org/es/docs/Aplicaciones/Comenzar?redirectlocale=es&redirectslug=Aplicaciones%2FComenzar_con_la_creaci%C3%B3n_de_aplicaciones#Ejecuci.C3.B3n_offline_y_uso_de_APIs_para_dispositivos_avanzados">developer.mozilla.org</a>
+			</p>
+
+		<footer class="notes">
+			Evalúa qué componentes de tu aplicación deben estar disponibles fuera de línea para ofrecer la mejor experiencia al usuario.
+		</footer>
+
+		</section>
+	</div></div>
+
+	<div id="firefoxos-dev-paso3" class="slide cover w"><div>
+		<section>
+			<header>
+				<h2>Paso 3: Empaqueta</h2>
+			</header>
+			<img src="pictures/firefoxos-dev/firefoxos-dev-paso3.png" class="middle" alt="Paso 3: El Manifiesto">
+			<p class="demourl">
+				<a href="https://developer.mozilla.org/es/docs/Aplicaciones/Manifest">developer.mozilla.org</a>
+			</p>
+
+		<footer class="notes">
+			Empaqueta. Crea un manifiesto con información de la app y otro para indicar los archivos que requiere para funcionar fuera de línea.
+		</footer>
+
+		</section>
+	</div></div>
+
+	<div id="firefoxos-dev-paso4" class="slide cover w"><div>
+		<section>
+			<header>
+				<h2>Paso 4: Prueba</h2>
+			</header>
+			<img src="pictures/firefoxos-dev/firefoxos-dev-paso4.png" class="middle" alt="Paso 4: Prueba">
+			<p class="demourl">
+				<a href="https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/">addons.mozilla.org</a>
+			</p>
+
+		<footer class="notes">
+			Prueba tu aplicación en Firefox OS Simulator para saber cómo ejecutará en un dispositivo Firefox OS.
+		</footer>
+
+		</section>
+	</div></div>
+
+	<div id="firefoxos-dev-paso5" class="slide cover w"><div>
+		<section>
+			<header>
+				<h2>Paso 5: Publica</h2>
+			</header>
+			<img src="pictures/firefoxos-dev/firefoxos-dev-paso5.png" class="middle" alt="Paso 5: Publica">
+			<p class="demourl">
+				<a href="https://marketplace.firefox.com/developers/">marketplace.firefox.com</a>
+			</p>
+
+		<footer class="notes">
+			Publica tu aplicación en tu sitio web, o en Mozilla Marketplace para su distribución gratuita o de pago.
+		</footer>
+
+		</section>
+	</div></div>
+  
+  <div id="building-firefoxos" class="slide w cover"><div>
+    <section>
+      <header>
+        <h2>Firefox OS Building Blocks</h2>
+      </header>
+      <img src="pictures/firefoxos-dev/building-firefoxos.png" 
+           alt="Firefox OS Building Blocks" 
+           class="middle shadow" height="450">
+			<p class="demourl">
+				<a href="http://buildingfirefoxos.com/">buildingfirefoxos.com</a>
+			</p>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="firefoxos-appicons" class="slide w cover"><div>
+    <section>
+      <header>
+        <h2>Firefox OS App Icons</h2>
+      </header>
+      <img src="pictures/firefoxos-dev/firefoxos-appicons.png" 
+           alt="Firefox OS App Icons" 
+           class="middle shadow" height="450">
+			<p class="demourl">
+				<a href="https://www.mozilla.org/en-US/styleguide/products/firefox-os/icons/">mozilla.org/styleguide/products/firefox-os/icons/</a>
+			</p>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="mdn-webapi" class="slide w cover"><div>
+    <section>
+      <header>
+        <h2>Web API / Web Activities</h2>
+      </header>
+      <img src="pictures/firefoxos-dev/mdn-webapi.png" 
+           alt="MDN Web API" 
+           class="middle shadow" height="450">
+			<p class="demourl">
+				<a href="https://developer.mozilla.org/es/docs/WebAPI">developer.mozilla.org/es/docs/WebAPI</a>
+			</p>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="firefoxos-2014-0" class="slide shout"><div>
+    <section>
+      <header>
+        <h2>Firefox OS en 2014</h2>
+      </header>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+  
+  <div id="firefoxos-2014-1" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Nuevos dispositivos</h2>
+      </header>
+        <img src="pictures/firefoxos-dev/vlcsnap-07.png" 
+             alt="New devices" 
+             class="middle shadow" height="400">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+  
+  <div id="firefoxos-2014-2" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Nuevos dispositivos</h2>
+      </header>
+        <img src="pictures/firefoxos-dev/vlcsnap-08.png" 
+             alt="New devices" 
+             class="middle shadow" height="400">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+  
+  <div id="firefoxos-2014-3" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Nuevos dispositivos</h2>
+      </header>
+        <img src="pictures/firefoxos-dev/vlcsnap-09.png" 
+             alt="New devices" 
+             class="middle shadow" height="400">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+  
+  <div id="firefoxos-2014-4" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Más allá de los smartphones</h2>
+      </header>
+        <img src="pictures/firefoxos-dev/vlcsnap-10.png" 
+             alt="Beyond smartphones" 
+             class="middle shadow" height="400">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+  
+  <div id="firefoxos-2014-5" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Nuevos mercados</h2>
+      </header>
+        <img src="pictures/firefoxos-dev/vlcsnap-11.png" 
+             alt="New devices" 
+             class="middle shadow" height="400">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+  
+  <div id="firefoxos-2014-6" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Nuevas alianzas para desarrollo</h2>
+      </header>
+        <img src="pictures/firefoxos-dev/vlcsnap-14.png" 
+             alt="New devices" 
+             class="middle shadow" height="400">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+  
+  <div id="firefoxos-2014-7" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Nuevos dispositivos</h2>
+      </header>
+        <img src="pictures/firefoxos-dev/vlcsnap-15.png" 
+             alt="New devices" 
+             class="middle shadow" height="400">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+  
+  <div id="firefoxos-2014-8" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Nuevos dispositivos</h2>
+      </header>
+        <img src="pictures/firefoxos-dev/vlcsnap-16.png" 
+             alt="New devices" 
+             class="middle shadow" height="400">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+  
+  <div id="tu-turno" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Ahora les toca a ustedes</h2>
+      </header>
+        <img src="pictures/appsperu/MozCafeChiclayo.jpg" 
+             alt="MozCafé Chiclayo" 
+             class="middle shadow" height="400">
+			<p class="demourl">
+				<a href="https://www.facebook.com/groups/firefoxosperu">facebook.com/groups/firefoxosperu</a>
+			</p>
+      <footer class="notes">
+        Esto recién empieza, ¡Necesitamos apps!
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="thanks" class="slide"><div>
+    <section>
+      <header>
+        <h2>Gracias</h2>
+      </header>
+      <img src="pictures/mozillaoverview/redpanda.jpg" class="right" alt="Red panda (Firefox)">
+      <ul class="nobull">
+        <li>Juan Eladio Sánchez Rosas</li>
+        <li>Mozilla Rep</li>
+        <li><a href="https://twitter.com/juaneladio">@juaneladio</a></li>
+        <li><strong>Slides</strong>: <a href="http://juaneladio.github.io/firefoxos-dev">juaneladio.github.io/firefoxos-dev</a></li>
+      </ul>
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/yortw/5798336827/">Photo by Yortw</a>
+      </small>
+      <footer class="notes">
+      </footer>
+		</section>
+	</div></div>
+
+  <!--
+    Para esconder la barra de progreso de la presentación, borra el elemento con la clase progress.
+    -->
+  <script src="scripts/script.js"></script>
+  <!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+</body>
+</html>
